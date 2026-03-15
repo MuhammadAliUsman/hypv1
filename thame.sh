@@ -10,7 +10,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-# URLs for themes (replace with your original ones)
+# Theme URLs
 STELLAR_URL="https://github.com/DITZZ112/fox/raw/main/stellar.zip"
 ENIGMA_URL="https://github.com/DITZZ112/fox/raw/main/enigma.zip"
 
@@ -54,11 +54,11 @@ install_theme() {
     wget -q "$THEME_URL" -O "$TEMP_DIR/theme.zip"
     unzip -o "$TEMP_DIR/theme.zip" -d "$TEMP_DIR"
 
-    # Remove old Pterodactyl panel (optional)
+    # Remove old Pterodactyl folder
     sudo rm -rf /var/www/pterodactyl
 
-    # Copy new theme
-    sudo cp -rfT "$TEMP_DIR" /var/www/pterodactyl
+    # Copy extracted pterodactyl folder directly
+    sudo cp -rfT "$TEMP_DIR/pterodactyl" /var/www/pterodactyl
 
     # Install NodeJS & Yarn
     curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
